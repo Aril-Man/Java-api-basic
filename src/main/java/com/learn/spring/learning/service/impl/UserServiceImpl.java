@@ -1,5 +1,6 @@
 package com.learn.spring.learning.service.impl;
 
+import com.learn.spring.learning.dto.UserDto;
 import com.learn.spring.learning.entity.User;
 import com.learn.spring.learning.repository.UserRepository;
 import com.learn.spring.learning.service.UserService;
@@ -54,5 +55,14 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
 
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateName(Integer id, UserDto userDto) {
+        User users = userRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
+
+        users.setName(userDto.getName());
+
+        userRepository.save(users);
     }
 }

@@ -1,6 +1,7 @@
 package com.learn.spring.learning.controllers;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.learn.spring.learning.dto.UserDto;
 import com.learn.spring.learning.entity.User;
 import com.learn.spring.learning.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,17 @@ public class UserController {
                 "code", "00",
                 "status", "Success",
                 "message" , "Successfully Delete User"
+        ));
+    }
+
+    @PutMapping("/update-name/{id}")
+    public ResponseEntity<Object> updateNameUser(@PathVariable Integer id, @RequestBody UserDto userDto) {
+        userService.updateName(id, userDto);
+
+        return ResponseEntity.status(HttpStatus.OK).body(Map.of(
+                "code", "00",
+                "status", "Success",
+                "message" , "Successfully Update Name User"
         ));
     }
 }

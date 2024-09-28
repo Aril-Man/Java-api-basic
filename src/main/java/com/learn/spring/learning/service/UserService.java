@@ -1,5 +1,6 @@
 package com.learn.spring.learning.service;
 
+import com.learn.spring.learning.dto.UserDto;
 import com.learn.spring.learning.entity.User;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface UserService {
     void updateUser(Integer id, User user);
 
     void deleteUser(Integer id);
+
+    void updateName(Integer id, UserDto userDto);
 }
